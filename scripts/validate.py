@@ -69,6 +69,8 @@ def main():
     for d in skills:
         if not KEBAB.match(d.name):
             err(f"skills/{d.name}: folder name must be kebab-case")
+        if d.name.startswith("candor-"):
+            err(f"skills/{d.name}: persona slugs use wainwright-, not the old prefix")
         f = d / "SKILL.md"
         if not f.is_file():
             err(f"skills/{d.name}: missing SKILL.md")
@@ -91,6 +93,8 @@ def main():
 
     agents = sorted((ROOT / "agents").glob("*.md"))
     for f in agents:
+        if f.name.startswith("candor-"):
+            err(f"agents/{f.name}: persona slugs use wainwright-, not the old prefix")
         fields, body = frontmatter(f)
         if not fields or not fields.get("name") or not fields.get("description"):
             err(f"agents/{f.name}: needs name and description frontmatter")
@@ -112,10 +116,14 @@ def main():
                     if pattern.search(line):
                         err(f"{rel}:{i}: {label}: {line.strip()[:80]}")
 
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    m = re.search(r"(\d+) skills and (\d+) agents", readme)
-    if m and (int(m.group(1)), int(m.group(2))) != (len(skills), len(agents)):
-        err(f"README.md: claims {m.group(1)} skills and {m.group(2)} agents, found {len(skills)} and {len(agents)}")
+    for label in ("README.md", "AGENTS.md"):
+        text = (ROOT / label).read_text(encoding="utf-8")
+        m = re.search(r"(\d+) skills and (\d+) agents", text)
+        if m and (int(m.group(1)), int(m.group(2))) != (len(skills), len(agents)):
+            err(
+                f"{label}: claims {m.group(1)} skills and {m.group(2)} agents, "
+                f"found {len(skills)} and {len(agents)}"
+            )
 
     if errors:
         for e in errors:

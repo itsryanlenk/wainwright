@@ -18,8 +18,8 @@ persona more accurate? Longer is not better.
    Use `<placeholders>`.
 3. **Examples show both sides.** Every rule worth writing down gets a good and a bad example.
 4. **No em dashes.** Use a period, comma, or colon.
-5. **Candor personas stay grounded.** Persona changes follow the rules in the upstream
-   [Candor](https://github.com/itsryanlenk/candor) project.
+5. **Wainwright personas stay grounded.** Keep the stance. Do not soften the
+   anti-sycophancy bar to make a persona nicer.
 
 ## Verify before you open a PR
 

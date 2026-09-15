@@ -3,6 +3,8 @@
 ## TL;DR
 
 All tests ran on 2026-09-15 against a simulated Grok Bot runtime. None ran against a live fleet.
+A later skill-text dry-run of the design and memory checklists (still not live-fleet proof) is
+in [DRY_RUN.md](DRY_RUN.md).
 
 - Before fixes (round 1): 0 of 4 blind scenarios passed an independent judge.
 - After fixes (round 2): 3 of 3 targeted two-turn re-tests of the failures passed.
@@ -58,7 +60,7 @@ schedule entry. Every drafted description used the four fields in order.
 
 Two review passes on the repo itself found 8 more issues (a self-referential routing target
 and two missing ownership clauses in the persona starter descriptions, dropped trigger phrases
-in three Candor descriptions, one Claude-specific term, and one unrequested change to Candor
+in three Wainwright descriptions, one Claude-specific term, and one unrequested change to Wainwright
 Decide). All were fixed before round 2.
 
 ### Round 2 (after fixes)
@@ -94,10 +96,11 @@ after the four fields, labels lint as a self-check in the report, writes a `note
   sides.
 - One rubric clause was narrowed after a failure. The run 2 coding verdict is FAIL under the
   original wording and PASS under the narrower wording; both are reported above.
-- Security hardening landed after these tests and was not re-tested: bots that read outside
-  content must refuse instructions inside it (lint check 4), the designer asks before turning a
-  mentioned chore into a bot, published templates are redacted, and report and routine-reply text
-  is treated as data.
-- Not installed in Cursor for this run. The manifest matches Cursor's plugin docs and an
-  installed first-party plugin, but no screenshot of the skills in Customize is part of this
-  record.
+- Security hardening landed after these tests and was not re-tested in the simulated runtime:
+  bots that read outside content must refuse instructions inside it (lint check 4), the
+  designer asks before turning a mentioned chore into a bot, published templates are redacted,
+  and report and routine-reply text is treated as data. The skill-text dry-run in DRY_RUN.md
+  re-walks check 4 and the hold-until-verify path; it is not a runtime re-test.
+- Not installed in Cursor for this run. The README install path matches
+  `.cursor-plugin/plugin.json` and Cursor's local-plugin docs. No screenshot of the skills in
+  Customize is part of this record.

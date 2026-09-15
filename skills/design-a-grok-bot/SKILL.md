@@ -22,7 +22,9 @@ The description is the entire persona. There is no delete API, so a bad bot is p
   never an assumption. If you cannot read them, say so to the user before creating.
 - Overlap or a one-off task: say so and stop. Do not create a bot for a single request.
 - One bot, one job. A request that bundles several jobs ("social posts, emails, and ads") is
-  several bots or one narrowed bot. Ask which job this bot owns; never merge them.
+  several bots or one narrowed bot. If more than one job is still on the table, the job is
+  not clear: ask which job this bot owns, or whether they want N separate single-job bots,
+  then stop. Do not draft, lint, or call `CreateAgent` until they pick. Never merge them.
 
 ### 2. Intake: ask only what an experiment cannot settle
 Ask, in one message, only the preferences that are missing:
@@ -32,12 +34,16 @@ Ask, in one message, only the preferences that are missing:
 - **Who it talks to**: which person, channel type, inbox, or other bot receives its output.
 
 Do not ask about things you can decide or test (formatting, tone details inside the voice,
-exact wording). Once the job is clear, do not ask "should I create it?". Create it.
+exact wording). Once exactly one job is clear and the missing preferences above have answers,
+do not ask "should I create it?". Create it.
 
+- **Intake limit.** One message, only the unanswered items from the list above (at most four).
+  Skip anything the user already stated.
 - **Send the questions and stop.** Wait for the user's actual reply. Never fill in answers to
   your own questions, and never pick the broadest option for an unanswered scope question.
+  If a required preference is still unanswered, wait. Do not invent it and do not create.
 - **Delegated choices.** If the user delegates the name or voice ("call it whatever"), choose
-  one, base the voice on the closest Candor persona, and state both in your final report.
+  one, base the voice on the closest Wainwright persona, and state both in your final report.
 
 ### 3. Draft the description (four fields, this order; coding bots add one Bar line)
 
@@ -58,8 +64,8 @@ Rules:
   It is a pointer, not a field. Never paste a playbook into the description.
 - **Non-coding bots**: the first sentence is only the job; name the concrete how (which API,
   inbox, feed, or channel); stay quiet when empty; never do the adjacent verb.
-- Voice or behavior source: to borrow a stance, pick the closest Candor persona in this plugin
-  (for example Candor Debug for a triage bot, Candor Data for a metrics bot) and compress its
+- Voice or behavior source: to borrow a stance, pick the closest Wainwright persona in this plugin
+  (for example Wainwright Debug for a triage bot, Wainwright Data for a metrics bot) and compress its
   stance into the Voice field. Do not paste the persona body.
 
 ### 4. Lint
@@ -99,11 +105,12 @@ redacted text, and publish only after they approve it.
 Report only what actually happened. A step that did not run is reported as not run, never as done.
 Label your own checks as self-checks and tool results as tool results.
 ```
+Overlap check (from profile.json reads): <name + job for each, or "none found", or "could not read">
 Lint (self-check, Bot Persona Lint): PASS | FAIL (<failed check numbers>)
 Created: <name> (<id>)              <- from the CreateAgent result
 Verified profile.json: yes | no (<what differed>) | not run   <- from the file read
 Routine handed off: confirmed | sent, awaiting reply | held (verification failed) | not needed
-Voice source: <Candor persona or "user specified">
+Voice source: <Wainwright persona or "user specified">
 ```
 
 ## Examples
@@ -130,6 +137,6 @@ Voice: skeptical, compact.
 Wake: routine, daily at 07:00. Quiet when the feed has nothing new.
 ```
 
-Starter descriptions for bots built on each Candor persona are in
-`references/candor-persona-bots.md`. They are templates: fill the concrete how and wake, lint,
+Starter descriptions for bots built on each Wainwright persona are in
+`references/wainwright-persona-bots.md`. They are templates: fill the concrete how and wake, lint,
 and create only when the job is real.

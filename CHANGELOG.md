@@ -8,6 +8,28 @@ All notable changes are documented here. The format follows
 
 Planned as 0.1.0.
 
+### Fixed
+
+- Hand Off Routine: hold the send until `profile.json` verification passed; never
+  report a routine as confirmed before the new bot replies. Description no longer
+  auto-applies after a failed CreateAgent verify.
+- Design a Grok Bot: vague multi-job requests stop before draft, lint, or create;
+  intake is one message of unanswered items; the report cites the overlap read.
+- Grok Bot Memory: restated corrections replace an existing entry; they do not
+  write a second copy. Schedule change with a stale log is an explicit example.
+- Bot Persona Lint: FAIL blocks CreateAgent until a rewrite lints PASS.
+- Fleet Healthcheck Hooks: a report that contains a ready CreateAgent or routine
+  spec is still a proposal.
+- README: private-repo local install path aligned with `.cursor-plugin/plugin.json`.
+- Validator now checks the skill and agent counts in both README.md and AGENTS.md.
+
+### Changed
+
+- Renamed the twelve persona skills and agents to `wainwright-*` slugs (folders,
+  agent files, frontmatter names, and user-facing copy). Persona behavior unchanged.
+- Regenerated `assets/` PNG and GIF files from `tools/brand/` so rasters match
+  the Wainwright templates (social preview sticker included).
+
 ### Added
 
 - Design a Grok Bot: intake, four-field persona (job, anti-jobs, voice, wake),
@@ -19,9 +41,9 @@ Planned as 0.1.0.
   only after the bot confirms.
 - Fleet Healthcheck Hooks: friction reports become proposals; nothing changes until the
   user picks.
-- Twelve Candor persona skills and agents, ported from Candor 0.5.0 with human-readable
-  names and "Use when" descriptions; persona bodies unchanged.
-- `skills/design-a-grok-bot/references/candor-persona-bots.md`: twelve starter bot
+- Twelve Wainwright persona skills and agents with human-readable names and
+  "Use when" descriptions; persona bodies unchanged.
+- `skills/design-a-grok-bot/references/wainwright-persona-bots.md`: twelve starter bot
   descriptions, one per persona.
 - `scripts/validate.py` and a CI workflow that runs it.
 - `docs/evals/RESULTS.md`: acceptance test method and results.

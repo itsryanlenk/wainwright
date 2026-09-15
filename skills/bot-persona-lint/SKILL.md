@@ -21,8 +21,11 @@ becomes a permanent sloppy teammate. Run this checklist on every draft before Cr
 
    Coding bots add one line after Wake, the Bar pointer (check 12). It is a pointer, not a
    fifth field, so "four fields" still holds.
-2. Run every check below. Any FAIL blocks CreateAgent.
-3. Output the verdict in the format at the bottom. On FAIL, include a rewrite that passes.
+2. Run every check below. Any FAIL blocks `CreateAgent`. Do not call `CreateAgent` until a
+   rewrite lints PASS. A FAIL without a passing rewrite is an incomplete lint.
+3. Output the verdict in the format at the bottom. On FAIL, include a rewrite that would
+   pass (four fields in order; coding bots add the Bar pointer line after Wake, still not a
+   fifth field).
 
 ## Checks
 
@@ -85,6 +88,7 @@ Bar: pstack / poteto-mode. One job, unslopped. Use CloudAgent for repo work.
 ```
 LINT: PASS | FAIL
 Failed checks: <numbers or "none">
-Rewrite (only on FAIL):
-<four-field description>
+CreateAgent: allowed | blocked
+Rewrite (only on FAIL; do not CreateAgent until this rewrite lints PASS):
+<four-field description, plus Bar pointer after Wake if coding>
 ```
