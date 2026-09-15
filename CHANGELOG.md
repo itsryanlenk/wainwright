@@ -27,6 +27,8 @@ Planned as 0.1.0.
 
 - Renamed the twelve persona skills and agents to `wainwright-*` slugs (folders,
   agent files, frontmatter names, and user-facing copy). Persona behavior unchanged.
+- Regenerated `assets/` PNG and GIF files from `tools/brand/` so rasters match
+  the Wainwright templates (social preview sticker included).
 
 ### Added
 
