@@ -2,7 +2,7 @@
   "name": "wainwright",
   "displayName": "Wainwright",
   "version": "0.1.0",
-  "description": "Skills that teach an orchestrator bot to design one-job Grok Bot teammates, verify every CreateAgent, write memory in the right tier, and hand off routines. Ships the twelve Wainwright persona skills and agents.",
+  "description": "Skills that teach an orchestrator bot to onboard a Grok Bot fleet, design one-job teammates, verify every CreateAgent, write memory in the right tier, and hand off routines. Ships the twelve Wainwright persona skills and agents plus first-run onboard.",
   "author": {
     "name": "itsryanlenk",
     "url": "https://ryanlenk.com"
