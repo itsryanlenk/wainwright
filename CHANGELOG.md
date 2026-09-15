@@ -32,6 +32,11 @@ Planned as 0.1.0.
 
 ### Added
 
+- Wainwright Onboard: first-wake pick menu, local plugin confirm, create only
+  user-picked teammates; paused routines and one fleet checkup are optional.
+- Wainwright Manager agent: four-field orchestrator persona for onboard and fleet
+  orchestration (not the Core / Straight Shooter stance).
+- README: Grok Bot first run section pointing at Manager and `wainwright-onboard`.
 - Design a Grok Bot: intake, four-field persona (job, anti-jobs, voice, wake),
   `CreateAgent`, `profile.json` verification, routine handoff, template note.
 - Bot Persona Lint: 14 checks run before every `CreateAgent`.
