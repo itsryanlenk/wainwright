@@ -8,6 +8,21 @@ All notable changes are documented here. The format follows
 
 Planned as 0.1.0.
 
+### Fixed
+
+- Hand Off Routine: hold the send until `profile.json` verification passed; never
+  report a routine as confirmed before the new bot replies. Description no longer
+  auto-applies after a failed CreateAgent verify.
+- Design a Grok Bot: vague multi-job requests stop before draft, lint, or create;
+  intake is one message of unanswered items; the report cites the overlap read.
+- Grok Bot Memory: restated corrections replace an existing entry; they do not
+  write a second copy. Schedule change with a stale log is an explicit example.
+- Bot Persona Lint: FAIL blocks CreateAgent until a rewrite lints PASS.
+- Fleet Healthcheck Hooks: a report that contains a ready CreateAgent or routine
+  spec is still a proposal.
+- README: private-repo local install path aligned with `.cursor-plugin/plugin.json`.
+- Validator now checks the skill and agent counts in both README.md and AGENTS.md.
+
 ### Added
 
 - Design a Grok Bot: intake, four-field persona (job, anti-jobs, voice, wake),

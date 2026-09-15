@@ -33,15 +33,25 @@ versions add a review workflow and an orchestrator.
 
 ## Install
 
-**Cursor (local):**
-1. Copy this folder to `~/.cursor/plugins/local/wainwright` (Windows: `%USERPROFILE%\.cursor\plugins\local\wainwright`).
-2. In Cursor settings, turn on **Allow Local Plugin Imports** if it is off.
+This pack is a Cursor Plugin. The plugin root must contain `.cursor-plugin/plugin.json`,
+which points at `./skills/` and `./agents/` (see Layout). Install it from this private
+repo. Public marketplace publish is out of scope for this pack;
+`.cursor-plugin/marketplace.json` stays for local grouping only.
+
+**Cursor (local, from this repo):**
+1. Clone or copy the repo so the plugin root is `~/.cursor/plugins/local/wainwright`
+   (Windows: `%USERPROFILE%\.cursor\plugins\local\wainwright`):
+   ```
+   git clone <this-repo-url> ~/.cursor/plugins/local/wainwright
+   ```
+   If you already have a checkout, copy that folder into `~/.cursor/plugins/local/wainwright`.
+   A symlink whose target is outside that folder may not load.
+2. In Cursor settings, turn on **Allow Local Plugin Imports** if it is off
+   (Teams/Enterprise: an admin may need to enable this).
 3. Run **Developer: Reload Window**, then open **Customize** and check the 17 skills and 12 agents.
 
 **Grok Bot:** have your designer bot read each `skills/*/SKILL.md` and store it with
 `update_state` skill write (name, description, body).
-
-**Publish your own fork:** push it, then submit at https://cursor.com/marketplace/publish.
 
 ## Quickstart
 
@@ -76,7 +86,8 @@ The first-round failures, in the agents' own output: designers answered their ow
 questions, claimed an overlap check they never ran, reported a verification they had not
 performed, logged a routine as confirmed before the new bot replied, and turned "social
 posts, emails, and ads" into one bot. The method and every run are in
-[docs/evals/RESULTS.md](docs/evals/RESULTS.md).
+[docs/evals/RESULTS.md](docs/evals/RESULTS.md). A later skill-text dry-run (no runtime,
+not live-fleet proof) is in [docs/evals/DRY_RUN.md](docs/evals/DRY_RUN.md).
 
 ## Safety and transparency
 
