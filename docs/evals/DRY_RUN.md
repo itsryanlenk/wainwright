@@ -14,11 +14,12 @@ correct action for that item. Fail means the skill is silent or contradictory.
 | Kind | Count | Names |
 |---|---|---|
 | Cursor Plugin manifest | 1 | `.cursor-plugin/plugin.json` (`skills`: `./skills/`, `agents`: `./agents/`) |
-| Grok Bot skills | 5 | design-a-grok-bot, bot-persona-lint, grok-bot-memory, hand-off-routine, fleet-healthcheck-hooks |
+| Grok Bot skills | 7 | design-a-grok-bot, bot-persona-lint, grok-bot-memory, hand-off-routine, fleet-healthcheck-hooks, wainwright-onboard, teammate-focus-onboard |
 | Wainwright persona skills | 12 | `skills/wainwright-{core,coding,logic,creative,brainstorm,security,debug,architect,writing,decide,data,curator}` |
 | Wainwright persona agents | 12 | matching `agents/wainwright-*.md` |
+| Fleet manager agent | 1 | `agents/wainwright-manager.md` |
 
-All 17 skill descriptions start with `Use when` and say whether they auto-apply.
+All 19 skill descriptions start with `Use when` and say whether they auto-apply.
 
 Persona slugs were renamed from `candor-*` to `wainwright-*`. The twelve stances are
 the same; only the product name changed.
@@ -138,13 +139,13 @@ true is a no-op; a changed value forgets the stale entry first.
 | Claim | Source | Match |
 |---|---|---|
 | Cursor Plugin, not a root `plugin.json` Agent Plugin | README Install; Cursor plugin docs | PASS: `.cursor-plugin/plugin.json` exists |
-| Manifest `skills` path | plugin.json `"skills": "./skills/"` | PASS: directory exists, 17 `SKILL.md` files |
-| Manifest `agents` path | plugin.json `"agents": "./agents/"` | PASS: directory exists, 12 `*.md` files |
+| Manifest `skills` path | plugin.json `"skills": "./skills/"` | PASS: directory exists, 19 `SKILL.md` files |
+| Manifest `agents` path | plugin.json `"agents": "./agents/"` | PASS: directory exists, 13 `*.md` files |
 | Local install root | README: `~/.cursor/plugins/local/wainwright` | PASS: matches Cursor "Test plugins locally" |
 | Private-repo method | README: `git clone <this-repo-url>` into that folder | PASS: documented; no marketplace publish step |
 | Local marketplace file | `.cursor-plugin/marketplace.json` source `./`, name `wainwright` | PASS: name matches plugin.json; not a publish listing |
 | Grok Bot skill write / workflows | README Install | PASS: `update_state` skill write and shared workflows named; Manager onboard is a pick menu, not a marketplace listing |
-| Skill and agent counts | README and AGENTS.md both say 17 skills and 12 agents | PASS: validator checks both |
+| Skill and agent counts | README and AGENTS.md both say 19 skills and 13 agents | PASS: validator checks both |
 
 ## Validator
 

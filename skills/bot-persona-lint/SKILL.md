@@ -8,8 +8,9 @@ description: >-
 ---
 # Bot Persona Lint
 
-A bot's description IS its whole persona, and there is no delete API. A sloppy description
-becomes a permanent sloppy teammate. Run this checklist on every draft before CreateAgent.
+A bot's description IS its whole persona. `CreateAgent` is a hire the designer cannot undo.
+The human can sidebar-Delete, but a sloppy description still ships until they do. Run this
+checklist on every draft before CreateAgent.
 
 ## Steps
 

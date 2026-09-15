@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-experimental%20v0.1.0-orange.svg)](CHANGELOG.md)
-[![Skills](https://img.shields.io/badge/skills-18-blue.svg)](skills)
+[![Skills](https://img.shields.io/badge/skills-19-blue.svg)](skills)
 [![Agents](https://img.shields.io/badge/agents-13-blue.svg)](agents)
 
 **One job per bot. Checked before it ships.** On 2026-09-15 this trail ran on a live
@@ -20,20 +20,22 @@ a scripted setting, including first-round failures. Both records are in
 An installable skills pack for Cursor and Grok Bot. It is v0.1 of a larger project; later
 versions add a review workflow. First-run onboard and fleet orchestration ship in this pack.
 
-1. **Wainwright Onboard** and **Wainwright Manager.** First wake, install, or fleet
-   setup: confirm the local plugin, one pick menu, then design and create only the
-   teammates the user picks. Manager is the orchestrator, not the Core persona alone.
-2. **Design a Grok Bot.** Intake, a four-field persona, `CreateAgent`, and a read of
-   `profile.json` to confirm the bot exists as written.
-3. **Bot Persona Lint.** 14 checks that block a sloppy description before it becomes a
-   permanent teammate. Grok Bot has no delete.
-4. **Grok Bot Memory.** Which facts go in `profile`, `log`, or `note`, which scope they get,
+1. **Wainwright Onboard** and **Wainwright Manager.** Manager is the hiring manager, not
+   the Core persona alone. Bots are roles. `CreateAgent` is a hire the designer cannot
+   undo. The human can sidebar-Delete.
+2. **Teammate Focus Onboard.** Each hire's first open restates one job and the anti-jobs,
+   then at most three questions so you can curtail or tighten fast.
+3. **Design a Grok Bot.** Intake, a four-field persona, `CreateAgent`, a read of
+   `profile.json` to confirm the bot exists as written, then a focus handoff.
+4. **Bot Persona Lint.** 14 checks that block a sloppy description before it becomes a
+   hire the designer cannot undo.
+5. **Grok Bot Memory.** Which facts go in `profile`, `log`, or `note`, which scope they get,
    and what never gets stored.
-5. **Hand Off Routine.** The exact `update_state` instruction a designer sends a new bot,
+6. **Hand Off Routine.** The exact `update_state` instruction a designer sends a new bot,
    recorded only after the bot confirms it.
-6. **Fleet Healthcheck Hooks.** Friction reports become proposals. Nothing changes until you
+7. **Fleet Healthcheck Hooks.** Friction reports become proposals. Nothing changes until you
    pick.
-7. **Twelve Wainwright personas**, as skills and agents: Core, Coding, Logic, Creative,
+8. **Twelve Wainwright personas**, as skills and agents: Core, Coding, Logic, Creative,
    Brainstorm, Security, Debug, Architect, Writing, Decide, Data, Curator.
 
 ## Install
@@ -54,34 +56,26 @@ repo. Public marketplace publish is out of scope for this pack and was not done;
    used this Windows local path and loaded 17 skills.
 2. In Cursor settings, turn on **Allow Local Plugin Imports** if it is off
    (Teams/Enterprise: an admin may need to enable this).
-3. Run **Developer: Reload Window**, then open **Customize** and check the 18 skills and 13 agents.
+3. Run **Developer: Reload Window**, then open **Customize** and check the 19 skills and 13 agents.
 
 **Grok Bot (skill write / workflows):**
 1. Have a designer bot read each `skills/*/SKILL.md` and store it with `update_state`
    skill write (name, description, body), or write the same skill files into shared
    workflows.
-2. First run on the live canary used a **Wainwright Manager** bot and a **Wainwright
-   Onboard** skill. Onboard is a pick menu. That path is how the fleet was stood up;
-   it is not a marketplace listing.
+2. Start with **Wainwright Manager**. That path is how a fleet is stood up. It is not
+   a marketplace listing.
 
-## Grok Bot first run
+## Grok Bot setup
 
-**Wainwright Manager** is the orchestrator for first-run onboard and fleet orchestration.
-It is not the Straight Shooter (Wainwright Core) persona acting alone. Core is one of
-twelve domain stances. Manager runs the install check, the pick menu, and the
-design / lint / create / verify / hand-off path.
+Start with **Wainwright Manager**. It speaks hiring language: bots are roles,
+`CreateAgent` is a hire the designer cannot undo, and you can sidebar-Delete a role
+you do not want.
 
-On first wake, or when you ask to install, set up, or onboard a fleet, the
-**Wainwright Onboard** skill ([`skills/wainwright-onboard/SKILL.md`](skills/wainwright-onboard/SKILL.md))
-applies from context:
+One pick menu. Then each hire opens with a short **Teammate Focus Onboard** pass so
+you can curtail or tighten the job on first open.
 
-1. Confirm the local plugin is at `~/.cursor/plugins/local/wainwright`
-   (Windows: `%USERPROFILE%\.cursor\plugins\local\wainwright`). Marketplace publish is
-   out of scope; `.cursor-plugin/marketplace.json` is local grouping only.
-2. One pick menu: which teammate jobs, persona modes, and standing healthchecks you want.
-   Manager does not spawn all twelve personas unprompted.
-3. Only your picks go through Design a Grok Bot, Bot Persona Lint, `CreateAgent`,
-   `profile.json` verify, Hand Off Routine, and Grok Bot Memory.
+Cursor install is the local plugin path above. Public marketplace publish is out of
+scope; `.cursor-plugin/marketplace.json` is local grouping only.
 
 Say this to start:
 
@@ -99,8 +93,8 @@ request and posts a digest every weekday morning.
 ```
 
 It asks only what it cannot decide (name, voice, where the digest goes), waits for your
-answers, then drafts, lints, creates, verifies, and hands off the routine. To check a
-description you already have:
+answers, then drafts, lints, creates, verifies, hands off focus onboard, and hands off
+the routine if Wake needs one. To check a description you already have:
 
 ```
 Lint this bot description before I create it: <paste>
@@ -180,10 +174,11 @@ skills/
   grok-bot-memory/
   hand-off-routine/
   fleet-healthcheck-hooks/
-  wainwright-onboard/    first-run pick menu and fleet onboard
+  wainwright-onboard/    first-run hire menu and fleet onboard
+  teammate-focus-onboard/  each hire's first-open focus pass
   wainwright-*/              12 persona skills
 agents/
-  wainwright-manager.md  orchestrator (onboard + fleet)
+  wainwright-manager.md  hiring manager (onboard + focus handoff)
   wainwright-*.md        12 persona agents
 scripts/validate.py      layout, frontmatter, and copy checks
 docs/evals/RESULTS.md    live canary log and simulated acceptance tests
