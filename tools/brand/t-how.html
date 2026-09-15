@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=block" rel="stylesheet">
+<link rel="stylesheet" href="trail.css">
+<style>
+body{width:1500px;height:720px;padding:40px 54px}
+h1{margin:0 0 30px;font-size:30px}
+.scene{width:1392px;height:212px;border:6px solid var(--black);position:relative}
+.scene img{width:1380px;height:200px}
+.nums{position:absolute;left:0;top:6px;width:1380px;height:40px}
+.nums span{position:absolute;top:44px;font-family:'Press Start 2P';font-size:18px;background:var(--black);color:var(--white);padding:6px 8px}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:34px}
+.card{padding:16px 14px;height:320px}
+.card h2{margin:0 0 12px;font-size:17px}
+.card p{margin:0;font-size:29px;line-height:1.02}
+.card code{font-family:'VT323';background:var(--black);color:var(--yellow);padding:0 5px}
+</style></head><body>
+<h1 class="ps">THE TRAIL TO A ONE-JOB BOT</h1>
+<div class="scene"><img class="px" src="pix/scene-trail.png"><div class="nums"></div></div>
+<div class="cards">
+  <div class="card box yellow"><h2 class="ps">1 ASK</h2><p>Only what a test cannot settle: job, name and voice, wake, who it talks to. Then wait.</p></div>
+  <div class="card box whitebg"><h2 class="ps">2 DRAFT</h2><p>One job. Anti-jobs. Voice. Wake. In that order, nothing extra.</p></div>
+  <div class="card box pink"><h2 class="ps">3 LINT</h2><p>14 checks. One fail and the wagon does not leave.</p></div>
+  <div class="card box blue"><h2 class="ps">4 CREATE</h2><p><code>CreateAgent</code> with the linted text. No delete, so no second try.</p></div>
+  <div class="card box whitebg"><h2 class="ps">5 VERIFY</h2><p>Read <code>profile.json</code>. The tool saying "done" does not count.</p></div>
+  <div class="card box green"><h2 class="ps">6 HAND OFF</h2><p>Routine sent with <code>SendToAgent</code>. Logged after the bot confirms.</p></div>
+</div>
+<script>
+const nums=document.querySelector('.nums');const col=(1392-5*18)/6;
+for(let i=0;i<6;i++){const s=document.createElement('span');s.textContent=String(i+1);const fx=Math.round((i*(col+18)+col/2-6)/5)*5;s.style.left=(fx-12)+'px';nums.appendChild(s)}
+</script>
+</body></html>

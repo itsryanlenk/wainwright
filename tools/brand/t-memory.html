@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=block" rel="stylesheet">
+<link rel="stylesheet" href="trail.css">
+<style>
+body{width:1500px;height:700px;padding:40px 56px}
+h1{margin:0 0 34px;font-size:30px}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+.col{height:520px;display:flex;flex-direction:column}
+.top{padding:14px 16px 12px;border-bottom:var(--bw) solid var(--black);display:flex;gap:14px;align-items:center}
+.top img{width:96px;height:96px;flex:none}
+.top b{font-family:'Press Start 2P';font-weight:400;font-size:20px;display:block;margin-bottom:8px}
+.top span{font-size:28px;line-height:1}
+.ex{padding:16px 18px;font-size:30px;line-height:1.02;background:var(--white);flex:1}
+.ex div{margin-bottom:16px;padding-left:12px;border-left:6px solid var(--black)}
+.never .ex div{text-decoration:line-through;text-decoration-thickness:2px;color:#444}
+</style></head><body>
+<h1 class="ps">PACKING THE WAGON: WHERE A FACT GOES</h1>
+<div class="cols">
+  <div class="col box"><div class="top yellow"><img class="px" src="pix/icon-crate.png"><div><b>PROFILE</b><span>Carried every mile: identity facts</span></div></div>
+    <div class="ex vt"><div>User goes by Sam, not Samuel.</div><div>User's timezone is UTC-5.</div></div></div>
+  <div class="col box"><div class="top blue"><img class="px" src="pix/icon-book.png"><div><b>LOG</b><span>The trail journal: dated rules</span></div></div>
+    <div class="ex vt"><div>2026-09-15: Digest posts at 09:00, never weekends.</div><div>2026-09-15: User prefers short answers.</div><div>2026-09-15: Billing bots report cents.</div></div></div>
+  <div class="col box"><div class="top green"><img class="px" src="pix/icon-note.png"><div><b>NOTE</b><span>Scrap paper: stale in days</span></div></div>
+    <div class="ex vt"><div>Waiting on the user to confirm the new channel name.</div></div></div>
+  <div class="col box never"><div class="top pink"><img class="px" src="pix/icon-never.png"><div><b>NEVER</b><span>Left on the trail</span></div></div>
+    <div class="ex vt"><div>API keys, tokens, passwords</div><div>Pasted contact lists</div><div>"Rough morning, coffee broke"</div><div>Anything profile.json already holds</div></div></div>
+</div>
+</body></html>

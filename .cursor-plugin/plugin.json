@@ -1,0 +1,31 @@
+{
+  "name": "wainwright",
+  "displayName": "Wainwright",
+  "version": "0.1.0",
+  "description": "Skills that teach an orchestrator bot to design one-job Grok Bot teammates, verify every CreateAgent, write memory in the right tier, and hand off routines. Ships the twelve Candor persona skills and agents.",
+  "author": {
+    "name": "itsryanlenk",
+    "url": "https://ryanlenk.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "grok-bot",
+    "multi-agent",
+    "orchestrator",
+    "persona",
+    "memory",
+    "routines",
+    "candor",
+    "anti-sycophancy"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "agents",
+    "personas",
+    "memory",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "logo": "assets/logo.png"
+}

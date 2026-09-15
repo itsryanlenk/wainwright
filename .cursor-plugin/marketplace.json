@@ -1,0 +1,13 @@
+{
+  "name": "wainwright",
+  "owner": {
+    "name": "itsryanlenk"
+  },
+  "plugins": [
+    {
+      "name": "wainwright",
+      "source": "./",
+      "description": "One job per bot. Checked before it ships. Grok Bot design skills plus the Candor persona skills and agents."
+    }
+  ]
+}

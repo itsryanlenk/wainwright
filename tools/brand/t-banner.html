@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=block" rel="stylesheet">
+<link rel="stylesheet" href="trail.css">
+<style>
+body{width:1500px;height:500px}
+.presents{position:absolute;left:44px;top:40px;padding:12px 16px;font-size:17px;color:var(--pink)}
+.name{position:absolute;left:44px;top:112px;padding:22px 22px 18px;font-size:44px;color:var(--black);text-shadow:5px 5px 0 var(--yellow)}
+.tag{position:absolute;left:46px;top:236px;width:450px;font-size:40px;line-height:1}
+.fine{position:absolute;left:46px;top:392px;width:450px;font-size:26px;line-height:1.05}
+.scene{position:absolute;left:540px;top:46px;width:572px;height:392px}
+.scene img{width:560px;height:380px}
+.s1{position:absolute;left:560px;top:404px;transform:rotate(-4deg);font-size:15px}
+.s2{position:absolute;left:760px;top:22px;transform:rotate(3deg);font-size:13px}
+.menu{position:absolute;left:1150px;top:128px;width:306px;height:310px;padding:16px 18px;font-size:29px;line-height:1.08}
+.menu .h{color:var(--yellow);margin-bottom:6px}
+.mit{position:absolute;left:1150px;top:40px;font-size:30px;padding:14px 20px}
+</style></head><body>
+<div class="frame"></div><div class="inner creambg"></div>
+<div class="presents ps blackbg">RYAN LENK PRESENTS:</div>
+<div class="name ps box pink">__UPPER__</div>
+<div class="tag vt">__TAGLINE__</div>
+<div class="fine vt">OPEN SOURCE &middot; MIT<br>CURSOR + GROK BOT &middot; 17 SKILLS</div>
+<div class="scene box"><img class="px" src="pix/scene-banner.png"></div>
+<div class="sticker blue s1">LINT: 14 CHECKS</div>
+<div class="sticker yellow s2">PROFILE.JSON VERIFIED</div>
+<div class="mit ps box pink">MIT</div>
+<div class="menu box blackbg vt"><div class="h">YOU MAY:</div>1. DESIGN A BOT<br>2. LINT THE PERSONA<br>3. VERIFY PROFILE.JSON<br>4. HAND OFF ROUTINE<br>5. WRITE MEMORY<br><br><span style="color:var(--yellow)">WHAT IS YOUR CHOICE?</span> <span class="caret"></span></div>
+<script>document.fonts.ready.then(()=>{const n=document.querySelector('.name');let s=44;while(n.getBoundingClientRect().width>460&&s>16){s-=1;n.style.fontSize=s+'px'}})</script>
+</body></html>

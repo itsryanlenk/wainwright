@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=block" rel="stylesheet">
+<link rel="stylesheet" href="trail.css">
+<style>
+body{width:1280px;height:640px}
+.frame{border-width:20px}.inner{inset:20px}
+.kicker{position:absolute;left:62px;top:52px;font-size:34px;padding:4px 16px}
+.name{position:absolute;left:62px;top:124px;padding:26px 28px 22px;font-size:66px;color:var(--black);text-shadow:7px 7px 0 var(--yellow)}
+.tag{position:absolute;left:64px;top:282px;font-size:54px;line-height:1}
+.scene{position:absolute;left:20px;bottom:20px;width:1240px;height:226px;border-top:6px solid var(--black);overflow:hidden}
+.scene img{width:1240px;height:220px}
+.chip{position:absolute;right:60px;top:52px;font-size:18px}
+</style></head><body>
+<div class="frame"></div><div class="inner creambg"></div>
+<div class="kicker vt blackbg">OPEN SOURCE &middot; MIT &middot; CURSOR + GROK BOT</div>
+<div class="sticker yellow chip">12 CANDOR PERSONAS</div>
+<div class="name ps box pink">__UPPER__</div>
+<div class="tag vt">__TAGLINE__</div>
+<div class="scene"><img class="px" src="pix/scene-social.png"></div>
+<script>document.fonts.ready.then(()=>{const n=document.querySelector('.name');let s=66;while(n.getBoundingClientRect().width>1150&&s>20){s-=1;n.style.fontSize=s+'px'}})</script>
+</body></html>
