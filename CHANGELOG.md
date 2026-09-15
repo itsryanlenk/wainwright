@@ -25,6 +25,15 @@ Planned as 0.1.0.
 
 ### Changed
 
+- Wainwright Onboard: hiring language (roles, undo-proof hire, sidebar-Delete),
+  plain pitch, defaults, one widget, progress checklist, and a required
+  `SendToAgent` Teammate Focus Onboard after each verified `CreateAgent`.
+- Wainwright Manager: seamless onboard plus mandatory focus handoff.
+- Design a Grok Bot: after verify, Manager or designer sends Teammate Focus
+  Onboard. `CreateAgent` is a hire the designer cannot undo; the human can
+  sidebar-Delete.
+- README: short Grok Bot setup section (Manager first, pick menu, each hire
+  focuses on first open). Marketplace stays out of scope.
 - Renamed the twelve persona skills and agents to `wainwright-*` slugs (folders,
   agent files, frontmatter names, and user-facing copy). Persona behavior unchanged.
 - Regenerated `assets/` PNG and GIF files from `tools/brand/` so rasters match
@@ -32,11 +41,16 @@ Planned as 0.1.0.
 
 ### Added
 
+- Teammate Focus Onboard: first user message restates one job and anti-jobs; at
+  most three focus questions; prefer narrower; update profile, memory, and
+  routine; tell the human they can sidebar-Delete. Auto-applies once when
+  Manager hands off.
 - Wainwright Onboard: first-wake pick menu, local plugin confirm, create only
   user-picked teammates; paused routines and one fleet checkup are optional.
 - Wainwright Manager agent: four-field orchestrator persona for onboard and fleet
   orchestration (not the Core / Straight Shooter stance).
-- README: Grok Bot first run section pointing at Manager and `wainwright-onboard`.
+- README: Grok Bot setup section pointing at Manager, the pick menu, and per-hire
+  focus.
 - Design a Grok Bot: intake, four-field persona (job, anti-jobs, voice, wake),
   `CreateAgent`, `profile.json` verification, routine handoff, template note.
 - Bot Persona Lint: 14 checks run before every `CreateAgent`.

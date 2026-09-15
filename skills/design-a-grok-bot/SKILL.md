@@ -4,18 +4,21 @@ description: >-
   Use when the user asks for a new bot, teammate, agent, or assistant in a Grok Bot
   fleet, or describes a recurring job no existing teammate owns. Auto-applies from
   context; do not wait for an @mention. Covers intake, the four-field persona,
-  CreateAgent, verifying profile.json, and routine handoff.
+  CreateAgent, verifying profile.json, Teammate Focus Onboard handoff, and routine
+  handoff.
 ---
 # Design a Grok Bot
 
 You are designing a teammate for a Grok Bot fleet. `CreateAgent(name, description)` makes it.
-The description is the entire persona. There is no delete API, so a bad bot is permanent.
+The description is the entire persona. `CreateAgent` is a hire the designer cannot undo.
+The human can sidebar-Delete a role they do not want.
 
 ## Steps
 
 ### 1. Confirm the job is real
 - If the user did not ask for a bot (they described a chore or a recurring pain), ask once whether
-  they want a standing bot for it before anything else. A bot is permanent; a mention is not a request.
+  they want a standing bot for it before anything else. A hire is a role the designer
+  cannot undo; a mention is not a request. The human can sidebar-Delete later.
 - The job recurs or will be asked for again, and no existing teammate already owns it.
 - Read the existing teammates' `profile.json` files (the directories under
   `/home/box/agent-data/agents/`) this turn and check for overlap. The check is an actual read,
@@ -80,14 +83,22 @@ Call `CreateAgent(name, description)` with the linted text, byte for byte.
 2. Read `/home/box/agent-data/agents/<id>/profile.json`.
 3. Confirm the stored name and description match what you sent.
 4. On a mismatch or a missing profile: report it to the user with both texts. Do not create a
-   second bot to "fix" it; there is no delete. Do not hand off a routine until the stored
+   second bot to "fix" it; the designer cannot undo the hire. The human can sidebar-Delete
+   if they want the bad role gone. Do not hand off focus or a routine until the stored
    profile matches, because a missing anti-jobs line means the bot would wake without its limits.
 
-### 7. Wake
+### 7. After create: focus onboard
+If verification passed, send the new bot an explicit **Teammate Focus Onboard** instruction
+with `SendToAgent`. Manager and designer both do this after every hire. Hold if
+verification failed or was not run. Sending is not the owner's first-open focus pass.
+Use the template in **Wainwright Onboard**. Never report the hire as ready for first open
+before that send.
+
+### 8. Wake
 If the Wake field includes a routine and verification passed, run **Hand Off Routine** now. You
 cannot write another bot's routines from this chat.
 
-### 8. Remember
+### 9. Remember
 Follow **Grok Bot Memory**. Memory records what is true in the runtime, not what you intended:
 - Verification passed: one `log` entry, agent scope, with the bot's name, id, and job.
 - Verification failed: one `note` entry, agent scope, recording the id and what the stored
@@ -95,13 +106,13 @@ Follow **Grok Bot Memory**. Memory records what is true in the runtime, not what
 
 Do not store the full description in memory; `profile.json` is the source.
 
-### 9. Optional: publish as a template
+### 10. Optional: publish as a template
 If the user wants the bot as a public template, copy the full live `profile.description` from
 `profile.json` into the template. Never substitute a one-line summary. Before publishing, replace
 every concrete channel, repo, inbox, dashboard, and person with a `<placeholder>`, show the user the
 redacted text, and publish only after they approve it.
 
-### 10. Report
+### 11. Report
 Report only what actually happened. A step that did not run is reported as not run, never as done.
 Label your own checks as self-checks and tool results as tool results.
 ```
@@ -109,6 +120,7 @@ Overlap check (from profile.json reads): <name + job for each, or "none found", 
 Lint (self-check, Bot Persona Lint): PASS | FAIL (<failed check numbers>)
 Created: <name> (<id>)              <- from the CreateAgent result
 Verified profile.json: yes | no (<what differed>) | not run   <- from the file read
+Focus onboard handed off: sent, awaiting first open | held (verification failed) | not run
 Routine handed off: confirmed | sent, awaiting reply | held (verification failed) | not needed
 Voice source: <Wainwright persona or "user specified">
 ```
