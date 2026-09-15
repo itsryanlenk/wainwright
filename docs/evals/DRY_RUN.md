@@ -1,9 +1,10 @@
 # Skill-text dry-run (2026-09-15)
 
-This is not live-fleet proof. No `CreateAgent`, `update_state`, or `SendToAgent` call ran
-against a real Grok Bot. A designer following only the skill text in this pack would be
-required to take the actions below. Historical simulated runs stay in
-[RESULTS.md](RESULTS.md).
+This is not live-fleet proof. It is a skill-text walkthrough. Live Grok Bot canaries from
+the same day (lint, `CreateAgent`, `profile.json` verify, Hand Off Routine on a standing
+wake) are in [RESULTS.md](RESULTS.md). A designer following only the skill text in this
+pack would be required to take the actions below. Historical simulated runs stay in
+RESULTS.md next to the live canary log.
 
 Checklists are extracted from the skill bodies. Pass means the skill text forces the
 correct action for that item. Fail means the skill is silent or contradictory.
@@ -142,6 +143,7 @@ true is a no-op; a changed value forgets the stale entry first.
 | Local install root | README: `~/.cursor/plugins/local/wainwright` | PASS: matches Cursor "Test plugins locally" |
 | Private-repo method | README: `git clone <this-repo-url>` into that folder | PASS: documented; no marketplace publish step |
 | Local marketplace file | `.cursor-plugin/marketplace.json` source `./`, name `wainwright` | PASS: name matches plugin.json; not a publish listing |
+| Grok Bot skill write / workflows | README Install | PASS: `update_state` skill write and shared workflows named; Manager onboard is a pick menu, not a marketplace listing |
 | Skill and agent counts | README and AGENTS.md both say 17 skills and 12 agents | PASS: validator checks both |
 
 ## Validator

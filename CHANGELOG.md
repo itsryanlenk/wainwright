@@ -51,7 +51,10 @@ Planned as 0.1.0.
 - `skills/design-a-grok-bot/references/wainwright-persona-bots.md`: twelve starter bot
   descriptions, one per persona.
 - `scripts/validate.py` and a CI workflow that runs it.
-- `docs/evals/RESULTS.md`: acceptance test method and results.
+- `docs/evals/RESULTS.md`: live Grok Bot canary (2026-09-15) on a real fleet, next to
+  the simulated Claude Sonnet acceptance tests.
+- README install copy names local plugin, Grok Bot skill write / workflows, and the
+  Manager onboard pick menu. Marketplace listing stays out of scope.
 
 ### Security
 
