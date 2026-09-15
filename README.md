@@ -7,11 +7,13 @@
 [![Skills](https://img.shields.io/badge/skills-17-blue.svg)](skills)
 [![Agents](https://img.shields.io/badge/agents-12-blue.svg)](agents)
 
-**One job per bot. Checked before it ships.** In my acceptance tests, a designer agent that
-followed these skills failed all 4 first-round scenarios. After I fixed what the failures
-exposed, it passed 3 of 3 targeted re-tests and a full non-coding run. A full coding run with a planted verification failure failed once; on the second run it caught the failure and held the bot back, which one judge still failed on a clause I wrote too broadly and a second judge passed. Every run used a simulated Grok Bot runtime and Claude Sonnet
-judges, so these results show how the skills steer an agent in a scripted setting. The
-failures are listed next to the passes in [docs/evals/RESULTS.md](docs/evals/RESULTS.md).
+**One job per bot. Checked before it ships.** On 2026-09-15 this trail ran on a live
+Grok Bot fleet (America/New_York): Bot Persona Lint, `CreateAgent`, a `profile.json` read
+to verify, and Hand Off Routine via `SendToAgent` when Wake is standing. That live canary
+is the stronger proof for Grok Bot users. The same day I also ran scripted Claude Sonnet
+evals against a simulated runtime. Those runs still show how the skills steer an agent in
+a scripted setting, including first-round failures. Both records are in
+[docs/evals/RESULTS.md](docs/evals/RESULTS.md).
 
 ## What it is
 
@@ -35,23 +37,29 @@ versions add a review workflow and an orchestrator.
 
 This pack is a Cursor Plugin. The plugin root must contain `.cursor-plugin/plugin.json`,
 which points at `./skills/` and `./agents/` (see Layout). Install it from this private
-repo. Public marketplace publish is out of scope for this pack;
+repo. Public marketplace publish is out of scope for this pack and was not done;
 `.cursor-plugin/marketplace.json` stays for local grouping only.
 
-**Cursor (local, from this repo):**
+**Cursor (local plugin, from this repo):**
 1. Clone or copy the repo so the plugin root is `~/.cursor/plugins/local/wainwright`
    (Windows: `%USERPROFILE%\.cursor\plugins\local\wainwright`):
    ```
    git clone <this-repo-url> ~/.cursor/plugins/local/wainwright
    ```
    If you already have a checkout, copy that folder into `~/.cursor/plugins/local/wainwright`.
-   A symlink whose target is outside that folder may not load.
+   A symlink whose target is outside that folder may not load. The 2026-09-15 canary
+   used this Windows local path and loaded 17 skills.
 2. In Cursor settings, turn on **Allow Local Plugin Imports** if it is off
    (Teams/Enterprise: an admin may need to enable this).
 3. Run **Developer: Reload Window**, then open **Customize** and check the 17 skills and 12 agents.
 
-**Grok Bot:** have your designer bot read each `skills/*/SKILL.md` and store it with
-`update_state` skill write (name, description, body).
+**Grok Bot (skill write / workflows):**
+1. Have a designer bot read each `skills/*/SKILL.md` and store it with `update_state`
+   skill write (name, description, body), or write the same skill files into shared
+   workflows.
+2. First run on the live canary used a **Wainwright Manager** bot and a **Wainwright
+   Onboard** skill. Onboard is a pick menu. That path is how the fleet was stood up;
+   it is not a marketplace listing.
 
 ## Quickstart
 
@@ -72,7 +80,28 @@ Lint this bot description before I create it: <paste>
 
 ## Does it work?
 
-| Test (2026-09-15) | Result |
+### Live Grok Bot canary (2026-09-15)
+
+Production trail on a real Grok Bot account (America/New_York). This is the runtime proof.
+It is a canary log, not a scored judge rubric and not a pass-rate.
+
+| Canary | What ran |
+|---|---|
+| Design trail | Bot Persona Lint, then `CreateAgent`, then a `profile.json` read to verify, then Hand Off Routine via `SendToAgent` when Wake is standing |
+| Store+Brand Digest | Created as a standing weekday 8am ET digest. The new bot sent a routine confirm reply |
+| Wiki Session, Theme Shipper, Brand Writing, SEO Playbook, Numbers Gate | Five on-demand wiki-practice bots. Each linted PASS and passed `profile.json` verify |
+| Wainwright Manager + Wainwright Onboard | First-run pick menu. A public shareable template was staged and left unpublished |
+| Local Cursor plugin | Installed at `~/.cursor/plugins/local/wainwright` on Windows (17 skills) |
+| Grok Bot skill files | Shared workflows skill files written for the fleet |
+| Repo on that day | PR #1 already merged (harden + Candor to Wainwright rebrand). Local `scripts/validate.py` reported 17 skills / 12 agents |
+| Marketplace | Still out of scope. Not listed. Local install only |
+
+### Simulated Claude Sonnet evals (2026-09-15)
+
+These runs used a simulated Grok Bot runtime and Claude Sonnet judges. They do not replace
+the live canary. They show how the skills steer a designer in a scripted setting.
+
+| Test (2026-09-15, simulated) | Result |
 |---|---|
 | Round 1: 4 blind scenarios before fixes (non-coding bot, coding bot, vague multi-job request, 10 memory inputs) | 0 of 4 passed |
 | Round 2: two-turn re-tests of three failure cases, after fixes | 3 of 3 passed |
@@ -85,9 +114,9 @@ Lint this bot description before I create it: <paste>
 The first-round failures, in the agents' own output: designers answered their own intake
 questions, claimed an overlap check they never ran, reported a verification they had not
 performed, logged a routine as confirmed before the new bot replied, and turned "social
-posts, emails, and ads" into one bot. The method and every run are in
-[docs/evals/RESULTS.md](docs/evals/RESULTS.md). A later skill-text dry-run (no runtime,
-not live-fleet proof) is in [docs/evals/DRY_RUN.md](docs/evals/DRY_RUN.md).
+posts, emails, and ads" into one bot. The method, every simulated run, and the live canary
+log are in [docs/evals/RESULTS.md](docs/evals/RESULTS.md). A skill-text dry-run (no runtime;
+not a substitute for the live canary) is in [docs/evals/DRY_RUN.md](docs/evals/DRY_RUN.md).
 
 ## Safety and transparency
 
@@ -110,7 +139,8 @@ not live-fleet proof) is in [docs/evals/DRY_RUN.md](docs/evals/DRY_RUN.md).
 
 <p align="center"><img src="assets/memory-tiers.png" alt="Packing the wagon: four columns with pixel icons. Profile, a crate carried every mile, holds identity facts. Log, the trail journal, holds dated rules. Note, scrap paper, holds short-lived context. Never, left on the trail, holds keys, contact lists, and trivia." width="100%"></p>
 
-How agents route between the skills: [AGENTS.md](AGENTS.md).
+How agents route between the skills: [AGENTS.md](AGENTS.md). The six-step trail (ask,
+draft, lint, create, verify, hand off) is what the live canary exercised on 2026-09-15.
 
 ## Layout
 
@@ -125,7 +155,7 @@ skills/
   wainwright-*/              12 persona skills
 agents/wainwright-*.md       12 persona agents
 scripts/validate.py      layout, frontmatter, and copy checks
-docs/evals/RESULTS.md    acceptance tests
+docs/evals/RESULTS.md    live canary log and simulated acceptance tests
 assets/                  banner, diagrams, demo
 tools/brand/             pixel art and render script for assets/
 AGENTS.md                how an agent uses the pack
@@ -144,10 +174,12 @@ its owners, and it uses none of their art.
 
 ## Known limitations
 
-- No live runtime in the tests. No `CreateAgent`, `update_state`, or `SendToAgent` call
-  ran against a real Grok Bot; the tool names come from my own runtime notes, not xAI
-  documentation.
-- Small sample, one model family. 10 simulated runs and 11 judge verdicts, with Claude Sonnet
-  playing the designer and grading it.
+- The live canary is a production trail log (bots created, lint PASS, profile verify,
+  routine confirm). It is not a scored judge rubric and has no invented pass-rate.
+- Simulated evals still used a scripted runtime and Claude Sonnet judges (10 runs,
+  11 verdicts). They remain useful for first-round misfires. They are not the live
+  Grok Bot proof.
+- Public marketplace listing is out of scope and was not done. Install is the local
+  plugin plus Grok Bot skill write / workflows.
 - Human skill names. Cursor's docs ask for lowercase names that match the folder; this
   pack uses the Grok Bot "Human Name" format, which Cursor's own pstack plugin also ships.

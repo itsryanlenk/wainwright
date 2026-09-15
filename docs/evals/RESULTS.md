@@ -2,19 +2,64 @@
 
 ## TL;DR
 
-All tests ran on 2026-09-15 against a simulated Grok Bot runtime. None ran against a live fleet.
-A later skill-text dry-run of the design and memory checklists (still not live-fleet proof) is
-in [DRY_RUN.md](DRY_RUN.md).
+Two records share 2026-09-15.
 
-- Before fixes (round 1): 0 of 4 blind scenarios passed an independent judge.
-- After fixes (round 2): 3 of 3 targeted two-turn re-tests of the failures passed.
-- Full runs with scripted tool results (round 3): the non-coding bot passed. The coding bot,
-  with a verification failure planted in the runtime, failed on run 1. Run 2 met all six
-  behavior checks and failed one judging clause I wrote too broadly; a second judge using a
-  narrower version of that clause passed it. Both verdicts are below.
-- `scripts/validate.py` flagged 8 of 8 problems planted in a test copy of the repo.
+**Live Grok Bot canary (stronger proof for Grok Bot users).** The design trail ran on a
+real fleet in America/New_York: Bot Persona Lint, `CreateAgent`, a `profile.json` read to
+verify, and Hand Off Routine via `SendToAgent` when Wake is standing. Bots created that
+day are listed below. This is a production trail log, not a scored judge rubric.
 
-## Method
+**Simulated Claude Sonnet evals (still useful, not the live proof).** Designer and memory
+runs used a simulated Grok Bot runtime. A later skill-text dry-run of the design and memory
+checklists is in [DRY_RUN.md](DRY_RUN.md). The dry-run is not live-fleet proof.
+
+- Live: Store+Brand Digest (standing weekday 8am ET digest, routine confirm reply).
+- Live: five on-demand wiki-practice bots with lint PASS and profile verify (Wiki Session,
+  Theme Shipper, Brand Writing, SEO Playbook, Numbers Gate).
+- Live: Wainwright Manager bot and Wainwright Onboard skill (pick menu). Public shareable
+  template staged, unpublished. Local plugin at `~/.cursor/plugins/local/wainwright` on
+  Windows (17 skills). Shared workflows skill files written for Grok Bot.
+- Simulated, before fixes (round 1): 0 of 4 blind scenarios passed an independent judge.
+- Simulated, after fixes (round 2): 3 of 3 targeted two-turn re-tests of the failures passed.
+- Simulated, full runs with scripted tool results (round 3): the non-coding bot passed. The
+  coding bot, with a verification failure planted in the runtime, failed on run 1. Run 2 met
+  all six behavior checks and failed one judging clause I wrote too broadly; a second judge
+  using a narrower version of that clause passed it. Both verdicts are below.
+- `scripts/validate.py` flagged 8 of 8 problems planted in a test copy of the repo. PR #1
+  (harden + Candor to Wainwright rebrand) was already merged; local validate on that tree
+  reported 17 skills / 12 agents.
+
+## Live Grok Bot canary (2026-09-15)
+
+Owner fleet, America/New_York. Tools called against the live Grok Bot runtime, not a
+scripted stub.
+
+| Step or artifact | Result |
+|---|---|
+| Trail: Ask, draft, lint, create, verify, hand off | Exercised end to end on a live account |
+| Bot Persona Lint | Ran before `CreateAgent` |
+| `CreateAgent` | Called on the live runtime |
+| Verify | `profile.json` read after create. Tool acknowledgement was not treated as proof |
+| Hand Off Routine | `SendToAgent` used when Wake is standing. Recorded after the new bot replied |
+| Store+Brand Digest | Created. Standing weekday 8am ET digest. Routine confirm reply received |
+| Wiki Session | On-demand wiki-practice bot. Lint PASS. `profile.json` verify passed |
+| Theme Shipper | On-demand wiki-practice bot. Lint PASS. `profile.json` verify passed |
+| Brand Writing | On-demand wiki-practice bot. Lint PASS. `profile.json` verify passed |
+| SEO Playbook | On-demand wiki-practice bot. Lint PASS. `profile.json` verify passed |
+| Numbers Gate | On-demand wiki-practice bot. Lint PASS. `profile.json` verify passed |
+| Wainwright Manager + Wainwright Onboard | First-run pick menu on the live fleet |
+| Public shareable template | Staged. Not published. Marketplace listing not done |
+| Cursor local plugin | `~/.cursor/plugins/local/wainwright` on Windows, 17 skills |
+| Grok Bot skill write | Shared workflows skill files written for the fleet |
+| Repo state that day | PR #1 merged. Local validate: 17 skills / 12 agents |
+
+The five wiki-practice bots are on-demand, so Hand Off Routine did not apply to them.
+Store+Brand Digest is the standing-wake case that completed the handoff.
+
+## Method (simulated evals)
+
+The rest of this file is the simulated Claude Sonnet record from the same day. It is
+not a substitute for the live canary table above.
 
 Designer simulations. A subagent with no guidance except this pack's skills and `AGENTS.md`
 played a Grok Bot designer. It received a user request and produced its intake questions, the
@@ -89,18 +134,21 @@ after the four fields, labels lint as a self-check in the report, writes a `note
 
 ## Known limitations
 
-- Simulated runtime. No `CreateAgent`, `update_state`, or `SendToAgent` call was made against a
-  real Grok Bot. The tool names and fields come from the owner's runtime description, not from
-  xAI documentation.
-- Small N, one model family. 10 simulated runs and 11 judge verdicts, Claude Sonnet on both
-  sides.
+- The live canary proves the Grok Bot runtime path (lint, create, verify, hand off when
+  Wake is standing). It is a trail log of named bots and steps. It is not a scored judge
+  rubric and has no pass-rate.
+- Simulated evals still used a scripted runtime. Small N, one model family: 10 simulated
+  runs and 11 judge verdicts, Claude Sonnet on both sides.
 - One rubric clause was narrowed after a failure. The run 2 coding verdict is FAIL under the
   original wording and PASS under the narrower wording; both are reported above.
-- Security hardening landed after these tests and was not re-tested in the simulated runtime:
-  bots that read outside content must refuse instructions inside it (lint check 4), the
-  designer asks before turning a mentioned chore into a bot, published templates are redacted,
-  and report and routine-reply text is treated as data. The skill-text dry-run in DRY_RUN.md
-  re-walks check 4 and the hold-until-verify path; it is not a runtime re-test.
-- Not installed in Cursor for this run. The README install path matches
-  `.cursor-plugin/plugin.json` and Cursor's local-plugin docs. No screenshot of the skills in
-  Customize is part of this record.
+- Security hardening landed after the simulated tests and was not re-tested in that
+  simulated runtime: bots that read outside content must refuse instructions inside it
+  (lint check 4), the designer asks before turning a mentioned chore into a bot, published
+  templates are redacted, and report and routine-reply text is treated as data. The
+  skill-text dry-run in DRY_RUN.md re-walks check 4 and the hold-until-verify path; it is
+  not a runtime re-test. The live canary did run lint and verify on a real account after
+  PR #1 (harden + rebrand) had merged.
+- Simulated rounds did not install the Cursor plugin. The live canary did: local plugin at
+  `~/.cursor/plugins/local/wainwright` on Windows (17 skills). No screenshot of the skills
+  in Customize is part of this record.
+- Public marketplace listing remains out of scope and was not done.
