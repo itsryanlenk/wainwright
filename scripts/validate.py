@@ -69,6 +69,8 @@ def main():
     for d in skills:
         if not KEBAB.match(d.name):
             err(f"skills/{d.name}: folder name must be kebab-case")
+        if d.name.startswith("candor-"):
+            err(f"skills/{d.name}: persona slugs use wainwright-, not the old prefix")
         f = d / "SKILL.md"
         if not f.is_file():
             err(f"skills/{d.name}: missing SKILL.md")
@@ -91,6 +93,8 @@ def main():
 
     agents = sorted((ROOT / "agents").glob("*.md"))
     for f in agents:
+        if f.name.startswith("candor-"):
+            err(f"agents/{f.name}: persona slugs use wainwright-, not the old prefix")
         fields, body = frontmatter(f)
         if not fields or not fields.get("name") or not fields.get("description"):
             err(f"agents/{f.name}: needs name and description frontmatter")

@@ -60,7 +60,7 @@ schedule entry. Every drafted description used the four fields in order.
 
 Two review passes on the repo itself found 8 more issues (a self-referential routing target
 and two missing ownership clauses in the persona starter descriptions, dropped trigger phrases
-in three Candor descriptions, one Claude-specific term, and one unrequested change to Candor
+in three Wainwright descriptions, one Claude-specific term, and one unrequested change to Wainwright
 Decide). All were fixed before round 2.
 
 ### Round 2 (after fixes)

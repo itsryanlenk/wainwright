@@ -28,7 +28,7 @@ versions add a review workflow and an orchestrator.
    recorded only after the bot confirms it.
 5. **Fleet Healthcheck Hooks.** Friction reports become proposals. Nothing changes until you
    pick.
-6. **Twelve Candor personas**, as skills and agents: Core, Coding, Logic, Creative,
+6. **Twelve Wainwright personas**, as skills and agents: Core, Coding, Logic, Creative,
    Brainstorm, Security, Debug, Architect, Writing, Decide, Data, Curator.
 
 ## Install
@@ -117,13 +117,13 @@ How agents route between the skills: [AGENTS.md](AGENTS.md).
 ```
 .cursor-plugin/          plugin.json, marketplace.json
 skills/
-  design-a-grok-bot/     SKILL.md, references/candor-persona-bots.md
+  design-a-grok-bot/     SKILL.md, references/wainwright-persona-bots.md
   bot-persona-lint/
   grok-bot-memory/
   hand-off-routine/
   fleet-healthcheck-hooks/
-  candor-*/              12 persona skills
-agents/candor-*.md       12 persona agents
+  wainwright-*/              12 persona skills
+agents/wainwright-*.md       12 persona agents
 scripts/validate.py      layout, frontmatter, and copy checks
 docs/evals/RESULTS.md    acceptance tests
 assets/                  banner, diagrams, demo
@@ -133,9 +133,9 @@ AGENTS.md                how an agent uses the pack
 
 ## License and credits
 
-MIT, see [LICENSE](LICENSE). The twelve persona skills and agents are ported from
-[Candor](https://github.com/itsryanlenk/candor) (MIT, same author) with human-readable names
-and "Use when" descriptions; the persona text is unchanged apart from replacing em dashes. The
+MIT, see [LICENSE](LICENSE). The twelve persona skills and agents are the Wainwright
+persona library. They ship with human-readable names and "Use when" descriptions; the
+persona text is unchanged apart from replacing em dashes and the product name. The
 four-field bot rubric and the Grok Bot runtime rules come from how I run my own bot fleet.
 
 The pixel art is original and drawn in code in `tools/brand/`. It is a parody nod to 1980s

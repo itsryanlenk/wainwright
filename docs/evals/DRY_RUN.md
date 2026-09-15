@@ -14,10 +14,13 @@ correct action for that item. Fail means the skill is silent or contradictory.
 |---|---|---|
 | Cursor Plugin manifest | 1 | `.cursor-plugin/plugin.json` (`skills`: `./skills/`, `agents`: `./agents/`) |
 | Grok Bot skills | 5 | design-a-grok-bot, bot-persona-lint, grok-bot-memory, hand-off-routine, fleet-healthcheck-hooks |
-| Candor persona skills | 12 | core, coding, logic, creative, brainstorm, security, debug, architect, writing, decide, data, curator |
-| Candor persona agents | 12 | matching `agents/candor-*.md` |
+| Wainwright persona skills | 12 | `skills/wainwright-{core,coding,logic,creative,brainstorm,security,debug,architect,writing,decide,data,curator}` |
+| Wainwright persona agents | 12 | matching `agents/wainwright-*.md` |
 
 All 17 skill descriptions start with `Use when` and say whether they auto-apply.
+
+Persona slugs were renamed from `candor-*` to `wainwright-*`. The twelve stances are
+the same; only the product name changed.
 
 ## Design checklist (from Design a Grok Bot, Bot Persona Lint, Hand Off Routine, Grok Bot Memory)
 

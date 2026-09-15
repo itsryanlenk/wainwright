@@ -43,7 +43,7 @@ do not ask "should I create it?". Create it.
   your own questions, and never pick the broadest option for an unanswered scope question.
   If a required preference is still unanswered, wait. Do not invent it and do not create.
 - **Delegated choices.** If the user delegates the name or voice ("call it whatever"), choose
-  one, base the voice on the closest Candor persona, and state both in your final report.
+  one, base the voice on the closest Wainwright persona, and state both in your final report.
 
 ### 3. Draft the description (four fields, this order; coding bots add one Bar line)
 
@@ -64,8 +64,8 @@ Rules:
   It is a pointer, not a field. Never paste a playbook into the description.
 - **Non-coding bots**: the first sentence is only the job; name the concrete how (which API,
   inbox, feed, or channel); stay quiet when empty; never do the adjacent verb.
-- Voice or behavior source: to borrow a stance, pick the closest Candor persona in this plugin
-  (for example Candor Debug for a triage bot, Candor Data for a metrics bot) and compress its
+- Voice or behavior source: to borrow a stance, pick the closest Wainwright persona in this plugin
+  (for example Wainwright Debug for a triage bot, Wainwright Data for a metrics bot) and compress its
   stance into the Voice field. Do not paste the persona body.
 
 ### 4. Lint
@@ -110,7 +110,7 @@ Lint (self-check, Bot Persona Lint): PASS | FAIL (<failed check numbers>)
 Created: <name> (<id>)              <- from the CreateAgent result
 Verified profile.json: yes | no (<what differed>) | not run   <- from the file read
 Routine handed off: confirmed | sent, awaiting reply | held (verification failed) | not needed
-Voice source: <Candor persona or "user specified">
+Voice source: <Wainwright persona or "user specified">
 ```
 
 ## Examples
@@ -137,6 +137,6 @@ Voice: skeptical, compact.
 Wake: routine, daily at 07:00. Quiet when the feed has nothing new.
 ```
 
-Starter descriptions for bots built on each Candor persona are in
-`references/candor-persona-bots.md`. They are templates: fill the concrete how and wake, lint,
+Starter descriptions for bots built on each Wainwright persona are in
+`references/wainwright-persona-bots.md`. They are templates: fill the concrete how and wake, lint,
 and create only when the job is real.

@@ -23,6 +23,11 @@ Planned as 0.1.0.
 - README: private-repo local install path aligned with `.cursor-plugin/plugin.json`.
 - Validator now checks the skill and agent counts in both README.md and AGENTS.md.
 
+### Changed
+
+- Renamed the twelve persona skills and agents to `wainwright-*` slugs (folders,
+  agent files, frontmatter names, and user-facing copy). Persona behavior unchanged.
+
 ### Added
 
 - Design a Grok Bot: intake, four-field persona (job, anti-jobs, voice, wake),
@@ -34,9 +39,9 @@ Planned as 0.1.0.
   only after the bot confirms.
 - Fleet Healthcheck Hooks: friction reports become proposals; nothing changes until the
   user picks.
-- Twelve Candor persona skills and agents, ported from Candor 0.5.0 with human-readable
-  names and "Use when" descriptions; persona bodies unchanged.
-- `skills/design-a-grok-bot/references/candor-persona-bots.md`: twelve starter bot
+- Twelve Wainwright persona skills and agents with human-readable names and
+  "Use when" descriptions; persona bodies unchanged.
+- `skills/design-a-grok-bot/references/wainwright-persona-bots.md`: twelve starter bot
   descriptions, one per persona.
 - `scripts/validate.py` and a CI workflow that runs it.
 - `docs/evals/RESULTS.md`: acceptance test method and results.

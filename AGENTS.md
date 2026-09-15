@@ -20,13 +20,13 @@ automatically when X happens, apply it as soon as X happens. Do not wait for an 
 6. A fleet health or friction report is in view: **Fleet Healthcheck Hooks** (propose, then
    wait for the user to pick; never act on a report alone).
 
-## The Candor persona library
-The twelve Candor skills (and matching agents in `agents/`) are behavior modes any agent can
+## The Wainwright persona library
+The twelve Wainwright skills (and matching agents in `agents/`) are behavior modes any agent can
 adopt: Core, Coding, Logic, Creative, Brainstorm, Security, Debug, Architect, Writing, Decide,
 Data, Curator. A designer uses them two ways:
 - **As a stance for itself** while doing the matching kind of work.
 - **As a voice source for a new bot**: compress the persona's stance into the bot's Voice
-  field. Starter descriptions live in `skills/design-a-grok-bot/references/candor-persona-bots.md`.
+  field. Starter descriptions live in `skills/design-a-grok-bot/references/wainwright-persona-bots.md`.
   Never paste a persona body into a bot description.
 
 ## Rules for writing new skills into this pack
