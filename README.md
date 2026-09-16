@@ -41,8 +41,8 @@ versions add a review workflow. First-run onboard and fleet orchestration ship i
 ## Install
 
 This pack is a Cursor Plugin. The plugin root must contain `.cursor-plugin/plugin.json`,
-which points at `./skills/` and `./agents/` (see Layout). Install it from this private
-repo. Public marketplace publish is out of scope for this pack and was not done;
+which points at `./skills/` and `./agents/` (see Layout). Install it from this public
+GitHub repo. Public marketplace publish is out of scope for this pack and was not done;
 `.cursor-plugin/marketplace.json` stays for local grouping only.
 
 **Cursor (local plugin, from this repo):**

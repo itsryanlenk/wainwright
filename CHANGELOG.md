@@ -10,6 +10,9 @@ Planned as 0.1.0.
 
 ### Fixed
 
+- README Install and DRY_RUN no longer call this pack a private repo. Install is
+  from this public GitHub repo via the local plugin path; marketplace listing
+  stays out of scope.
 - Hand Off Routine: hold the send until `profile.json` verification passed; never
   report a routine as confirmed before the new bot replies. Description no longer
   auto-applies after a failed CreateAgent verify.

@@ -142,7 +142,7 @@ true is a no-op; a changed value forgets the stale entry first.
 | Manifest `skills` path | plugin.json `"skills": "./skills/"` | PASS: directory exists, 19 `SKILL.md` files |
 | Manifest `agents` path | plugin.json `"agents": "./agents/"` | PASS: directory exists, 13 `*.md` files |
 | Local install root | README: `~/.cursor/plugins/local/wainwright` | PASS: matches Cursor "Test plugins locally" |
-| Private-repo method | README: `git clone <this-repo-url>` into that folder | PASS: documented; no marketplace publish step |
+| Clone from this repo | README: `git clone <this-repo-url>` into that folder | PASS: documented; public GitHub repo; no marketplace publish step |
 | Local marketplace file | `.cursor-plugin/marketplace.json` source `./`, name `wainwright` | PASS: name matches plugin.json; not a publish listing |
 | Grok Bot skill write / workflows | README Install | PASS: `update_state` skill write and shared workflows named; Manager onboard is a pick menu, not a marketplace listing |
 | Skill and agent counts | README and AGENTS.md both say 19 skills and 13 agents | PASS: validator checks both |
