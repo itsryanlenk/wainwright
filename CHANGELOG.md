@@ -10,6 +10,11 @@ Planned as 0.1.0.
 
 ### Fixed
 
+- README and DRY_RUN: install copy no longer calls this a private repo. It is a
+  public GitHub repo. Local-plugin path and marketplace-out-of-scope unchanged.
+- Wainwright Manager: four-field description now lints PASS (no sidebar-Delete
+  or cannot-undo line). README onboard copy uses one-job / lint-before-CreateAgent
+  instead of delete-button framing.
 - Hand Off Routine: hold the send until `profile.json` verification passed; never
   report a routine as confirmed before the new bot replies. Description no longer
   auto-applies after a failed CreateAgent verify.

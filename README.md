@@ -21,14 +21,12 @@ An installable skills pack for Cursor and Grok Bot. It is v0.1 of a larger proje
 versions add a review workflow. First-run onboard and fleet orchestration ship in this pack.
 
 1. **Wainwright Onboard** and **Wainwright Manager.** Manager is the hiring manager, not
-   the Core persona alone. Bots are roles. `CreateAgent` is a hire the designer cannot
-   undo. The human can sidebar-Delete.
+   the Core persona alone. Bots are roles. One job per hire. Lint before `CreateAgent`.
 2. **Teammate Focus Onboard.** Each hire's first open restates one job and the anti-jobs,
    then at most three questions so you can curtail or tighten fast.
 3. **Design a Grok Bot.** Intake, a four-field persona, `CreateAgent`, a read of
    `profile.json` to confirm the bot exists as written, then a focus handoff.
-4. **Bot Persona Lint.** 14 checks that block a sloppy description before it becomes a
-   hire the designer cannot undo.
+4. **Bot Persona Lint.** 14 checks that block a sloppy description before `CreateAgent`.
 5. **Grok Bot Memory.** Which facts go in `profile`, `log`, or `note`, which scope they get,
    and what never gets stored.
 6. **Hand Off Routine.** The exact `update_state` instruction a designer sends a new bot,
@@ -41,8 +39,8 @@ versions add a review workflow. First-run onboard and fleet orchestration ship i
 ## Install
 
 This pack is a Cursor Plugin. The plugin root must contain `.cursor-plugin/plugin.json`,
-which points at `./skills/` and `./agents/` (see Layout). Install it from this private
-repo. Public marketplace publish is out of scope for this pack and was not done;
+which points at `./skills/` and `./agents/` (see Layout). Install it from this public
+GitHub repo. Public marketplace publish is out of scope for this pack and was not done;
 `.cursor-plugin/marketplace.json` stays for local grouping only.
 
 **Cursor (local plugin, from this repo):**
@@ -68,8 +66,7 @@ repo. Public marketplace publish is out of scope for this pack and was not done;
 ## Grok Bot setup
 
 Start with **Wainwright Manager**. It speaks hiring language: bots are roles,
-`CreateAgent` is a hire the designer cannot undo, and you can sidebar-Delete a role
-you do not want.
+one job per hire, and lint must PASS before `CreateAgent`.
 
 One pick menu. Then each hire opens with a short **Teammate Focus Onboard** pass so
 you can curtail or tighten the job on first open.
